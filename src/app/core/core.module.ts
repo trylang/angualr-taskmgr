@@ -1,12 +1,17 @@
 import { NgModule, SkipSelf, Optional } from '@angular/core';
 import { CommonModule } from '@angular/common';  //shared模块已经在根app模块已加载。
+import {MatToolbarModule, MatIconModule, MatButtonModule} from '@angular/material';
+
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatIconModule
   ],
   declarations: [ // 申明组件，但只在此模块中可用，如果想让其他模块也可使用，则需要到处export
     HeaderComponent, FooterComponent, SidebarComponent

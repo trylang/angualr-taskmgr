@@ -1,7 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
-html, body, app-root, .site { 
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+html, body, app-root, mat-sidenav-container, .site { 
   width: 100%;
-  height: 100%;    
+  height: 100%;
+  min-height: 100%;   
   margin: 0;
   
   .site {
@@ -11,5 +13,10 @@ html, body, app-root, .site {
 
   main {
     flex: 1;
+  }
+
+  .full-remaining-space {
+    // 使用flexbox 填充剩余空间
+    flex : 1 1 auto;
   }
 }
