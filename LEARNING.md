@@ -31,9 +31,17 @@ angualr4.x 完成的一个任务管理平台
 ## 全局安装json-server报错，重新卸载nvm安装node,步骤如下：
 
 ```
-  `$ sudo rm -rf .nvm .npm`
-  `$ brew install nvm`
-  `$ nvm install stable #安装最新稳定版 node`
+  $ sudo rm -rf .nvm .npm
+  $ brew install nvm
+  $ nvm install stable #安装最新稳定版 node
   …
-  `$ sudo npm install express`
+  $ sudo npm install express
 ```
+
+----------
+
+#### **第一天学习心得:**
+
+- material自定义svgIcon，需要额外引入import {httpModul} from '@angular/http'，才可找到正确的本地路径；
+- 新建shared文件，专门用于导入和导出共用的module；
+- 新建utills文件，专门写需要加载内容用到的函数，在只能加载一次的核心模块core中引用；
