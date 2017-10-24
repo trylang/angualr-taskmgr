@@ -2,10 +2,10 @@
     记录企业级协作平台学习心得
     使用最新技术(Angular4.x + @angular/material2 + Sass + Webpack3.x)构建完美产品; 
     [comment]: <> (This is a comment, it will not be included)
-[comment]: <> (in  the output file unless you use it in)
-[comment]: <> (a reference style link.)
-[//]: <> (This is also a comment.)
-[//]: # (This may be the most platform independent comment)
+    [comment]: <> (in  the output file unless you use it in)
+    [comment]: <> (a reference style link.)
+    [//]: <> (This is also a comment.)
+    [//]: # (This may be the most platform independent comment)
     [^_^]: 
         应用亮点技术有e2e, unit-testing, code coverage, 回归测试
 
