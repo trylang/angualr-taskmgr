@@ -1,11 +1,11 @@
 # angualr-taskmgr
 
 angualr4.x 完成的一个任务管理平台
-安装VScode 网址：`https://code.visualstudio.com`;
+安装VScode 网址：[https://code.visualstudio.com](https://code.visualstudio.com);
 
 1. 安装angular脚手架：`npm i -g @angular/cli`; 如果失败，先uninstall，再`npm cache clean` 清除缓存再重新安装;angular-cli是用typescript写的, 所以要先装这两个: `npm install -g typescript typings`.
 
-2. 网址：chrome-extension-downloader.com ，chrome安装 Augury插件，ID：elgalmkoelokbchhkhacckoklkejnhcd 。 可以下载插件;
+2. 网址：[chrome-extension-downloader.com](chrome-extension-downloader.com) ，chrome安装 Augury插件，ID：elgalmkoelokbchhkhacckoklkejnhcd 。 可以下载插件;
 
 3. `npm i --save` 包名: 软件依赖: `npm i --save-dev` 包名：开发依赖;
 4. `ng new` 项目名：新建angular项目; `ng new taskmgr -si --style=scss`;
@@ -17,9 +17,9 @@ angualr4.x 完成的一个任务管理平台
 
 -  html： `div>header+main+footer` 按回车快速建立模版；`div*3+div.box*3` 创建布局；
 
-- material设计库：`https://materialdesignblog.com` 有官方组件库；安装：`npm i --save @angular/material`;
-- material文档库：`https://material.angularjs.org/latest/`；
-- material工具库：`https://material.io/color/`；
+- material设计库： [https://materialdesignblog.com](https://materialdesignblog.com) 有官方组件库；安装：`npm i --save @angular/material`;
+- material文档库：[https://material.angularjs.org/latest/](https://material.angularjs.org/latest/)；
+- material工具库：[https://material.io/color/](https://material.io/color/)；
 
 ## Mock Rest API
 
