@@ -2,7 +2,7 @@
     记录企业级协作平台学习心得
     使用最新技术(Angular4.x + @angular/material2 + Sass + Webpack3.x)构建完美产品; 
     [^_^]: 
-      应用亮点技术有e2e, unit-testing, code coverage, 回归测试
+        应用亮点技术有e2e, unit-testing, code coverage, 回归测试
 
 ## 使用指南
 ```
