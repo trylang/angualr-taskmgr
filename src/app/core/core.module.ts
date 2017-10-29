@@ -1,6 +1,6 @@
 import { NgModule, SkipSelf, Optional } from '@angular/core';
-import { CommonModule } from '@angular/common';  //shared模块已经在根app模块已加载。
 import { HttpModule } from '@angular/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { DomSanitizer } from '@angular/platform-browser'; // 用于返回安全的URL地址。
 import { MatIconRegistry } from '@angular/material';
@@ -14,8 +14,8 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 
 @NgModule({
   imports: [
-    CommonModule,
     HttpModule,
+    BrowserAnimationsModule,
     SharedModule,
   ],
   declarations: [ // 申明组件，但只在此模块中可用，如果想让其他模块也可使用，则需要到处export

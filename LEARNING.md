@@ -40,8 +40,12 @@ angualr4.x 完成的一个任务管理平台
 
 ----------
 
-#### **第一天学习心得:**
+#### **第一天学习心得：**
 
 - material自定义svgIcon，需要额外引入import {httpModul} from '@angular/http'，才可找到正确的本地路径；
 - 新建shared文件，专门用于导入和导出共用的module；
 - 新建utills文件，专门写需要加载内容用到的函数，在只能加载一次的核心模块core中引用；
+
+#### **2017/10/29 学习心得：**
+
+- 引入时间类库的方法： cnpm i --save date-fns; cnpm i --save-dev @types/date-fns  
