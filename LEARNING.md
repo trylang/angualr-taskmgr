@@ -48,4 +48,5 @@ angualr4.x 完成的一个任务管理平台
 
 #### **2017/10/29 学习心得：**
 
-- 引入时间类库的方法： cnpm i --save date-fns; cnpm i --save-dev @types/date-fns  
+- 引入时间类库的方法： cnpm i --save date-fns; cnpm i --save-dev @types/date-fns 
+- 在使用angular/cli工具创建新的模块时，会报错”ELOOP: too many symbolic links encountered“。是由于使用cnpm install 安装的结果。删除掉node_nodules,使用npm install 重新安装就好。

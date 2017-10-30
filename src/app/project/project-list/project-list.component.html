@@ -1,0 +1,10 @@
+<div class="container">
+  <app-project-item
+    class="card"
+    *ngFor="let project of projects"
+    [item]="project">
+  </app-project-item>
+</div>
+<button md-fab type="button" class="fab-button">
+  <md-icon>add</md-icon>
+</button>
