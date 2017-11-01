@@ -10,7 +10,11 @@ export class ProjectListComponent implements OnInit {
   projects = [{
     "name": "企业写作平台",
     "desc": "这是一个企业内部项目",
-    "converImg": "assets/img/covers/0/jpg"
+    "coverImg": "assets/img/covers/0.jpg"
+  }, {
+    "name": "企业写作平台2",
+    "desc": "这是一个企业内部项目2",
+    "coverImg": "/assets/img/covers/1.jpg"
   }];
   constructor() { }
 
