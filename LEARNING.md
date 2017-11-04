@@ -61,3 +61,23 @@ angualr4.x 完成的一个任务管理平台
 - 在使用angular/cli工具创建新的模块时，会报错”ELOOP: too many symbolic links encountered“。是由于使用cnpm install 安装的结果。删除掉node_nodules,使用npm install 重新安装就好。
 
 - 全局npm安装模块时，输入" $ npm install -g @angular/cli"时，会报错"npm WARN checkPermissions Missing write access"。解决方法是：删除掉 C:\Users\dd\AppData\Roaming\npm-cache\，C:\Users\dd\AppData\Roaming\npm\  两个文件夹 重新执行 npm install -g。
+
+### **2017/11/4 学习心得：**
+
+- 显示定义与隐形定义，是拿分号定义的，是typescript的定义形式。不是太懂
+
+```如下：
+  displayUser(user: {id: string; name: string}) {
+      return user ? user.name : '';
+    }
+
+    //显性定义如下：效果与上面定义相同
+    export interface User {
+      id: string;
+      name: string;
+    }
+```
+
+- 聪明组件越少越好，笨组件越多越好。
+
+- 建立简单组件的方法： ng g c shared/confirm-dialog -it -is --spec=false;

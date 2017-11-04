@@ -1,0 +1,14 @@
+<form class="form">
+  <span mat-dialog-title>移动所选内容</span>
+  <div mat-dialog-content>
+    <mat-select placeholder="选择目标列表" formControlName="targetList" class="full-width">
+      <mat-option *ngFor="let list of lists" [value]="list.id">
+        {{list.name}}
+      </mat-option>
+    </mat-select>
+    <div mat-dialog-actions>
+      <button mat-raised-button color="primary" type="submit">确定</button>
+      <button mat-dialog-close mat-raised-button type="button">关闭</button>
+    </div>
+  </div>
+</form>

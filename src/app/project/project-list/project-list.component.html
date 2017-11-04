@@ -2,9 +2,12 @@
   <app-project-item
     class="card"
     *ngFor="let project of projects"
-    [item]="project">
+    [item]="project"
+    (onInvite)="launchInviteDialog()"
+    (onEdit)="lauchUpdateDialog()"
+    (onDel)="lauchCOnfirmDialog()">
   </app-project-item>
 </div>
-<button md-fab type="button" class="fab-button">
-  <md-icon>add</md-icon>
+<button mat-fab type="button" class="fab-button" (click)="openNewProjectDialog()">
+  <mat-icon>add</mat-icon>
 </button>

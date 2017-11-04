@@ -6,6 +6,7 @@ import { CoreModule }from './core/core.module';
 
 import { AppRoutingModule } from './app.routing.module';
 import { ProjectModule } from './project/project.module';
+import { TaskModule } from './task/task.module';
 
 import { AppComponent } from './app.component';
 import { LoginModule } from './login/login.module';
@@ -22,6 +23,7 @@ import { LoginModule } from './login/login.module';
     AppRoutingModule,
     LoginModule,
     ProjectModule,
+    TaskModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

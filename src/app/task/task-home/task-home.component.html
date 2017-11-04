@@ -1,0 +1,14 @@
+<div class="task-lists">
+  <app-task-list class="list-container" *ngFor="let list of lists">
+    <app-task-header [headerTitle]="list.name" 
+      (newTask)="lauchNewTaskDialog()"
+      (moveAll)="lauchCopyTaskDialog()"
+      (delList)="luachConfirmDialog()"
+      (editList)="luachNewTaskList()"></app-task-header>
+    <app-task-item *ngFor="let task of list.tasks" [item]="task" (taskClick)="lauchUpdateTaskDialog(task)" >
+    </app-task-item>
+  </app-task-list>
+  <button mat-fab type="button" class="fab-button" (click)="openNewTaskDialog()">
+    <mat-icon>add</mat-icon>
+  </button>
+</div>
