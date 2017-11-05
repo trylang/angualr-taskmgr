@@ -56,7 +56,7 @@ export class TaskHomeComponent implements OnInit {
     id: 2,
     name: '进行中',
     tasks: [{
-      id: 1,
+      id: 5,
       completed: false,
       priority: 3,
       desc: '任务一： 去星巴克发染发染发买杯咖啡',
@@ -67,7 +67,7 @@ export class TaskHomeComponent implements OnInit {
       },
       dueDate: new Date()
     }, {
-      id: 2,
+      id: 6,
       completed: false,
       priority: 2,
       desc: '任务二： 完成老发染发染发染发板布置的泡泡糖作业',
@@ -78,7 +78,7 @@ export class TaskHomeComponent implements OnInit {
       },
       dueDate: new Date()
     }, {
-      id: 3,
+      id: 7,
       completed: true,
       priority: 1,
       desc: '任务三： 好好学习学习呀哈哈哈哈哈',
@@ -121,6 +121,19 @@ export class TaskHomeComponent implements OnInit {
   openNewTaskDialog() {
     const dialogRef = this.dialog.open(NewTaskListComponent, {data: {title: '新增列表名称'}});
     dialogRef.afterClosed().subscribe(result => console.log(result));    
+  }
+
+  handleMove(srcData, list) {
+    switch (srcData.tag) {
+      case 'task-item':
+        console.log('handling item');
+        break;
+      case 'task-list':
+        console.log('handling list');
+        break;
+      default:
+        break;
+    }
   }
 
 }

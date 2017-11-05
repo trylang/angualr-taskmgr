@@ -13,12 +13,13 @@ import { FooterComponent } from './footer/footer.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 
 import 'hammerjs';
+import 'rxjs/add/operator/take';
 
 @NgModule({
   imports: [
     HttpModule,
-    BrowserAnimationsModule,
     SharedModule,
+    BrowserAnimationsModule,
   ],
   declarations: [ // 申明组件，但只在此模块中可用，如果想让其他模块也可使用，则需要到处export
     HeaderComponent, FooterComponent, SidebarComponent

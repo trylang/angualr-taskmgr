@@ -7,6 +7,7 @@ import { MatToolbarModule, MatSelectModule, MatRadioModule, MatNativeDateModule,
   MatTabsModule, MatGridListModule, MatSlideToggleModule, MatIconModule, MatButtonModule, MatCardModule, 
   MatListModule, MatInputModule } from '@angular/material';
 import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
+import { DirectiveModule } from '../directive/directive.module';
 
 @NgModule({
   imports: [
@@ -29,6 +30,7 @@ import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.componen
     MatDatepickerModule,
     MatRadioModule,
     MatSelectModule,
+    DirectiveModule,
   ],
   exports: [
     CommonModule,
@@ -50,6 +52,7 @@ import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.componen
     MatDatepickerModule,
     MatRadioModule,
     MatSelectModule,
+    DirectiveModule,
   ],
   declarations: [ConfirmDialogComponent,],
   entryComponents: [ConfirmDialogComponent]

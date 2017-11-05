@@ -54,6 +54,8 @@ angualr4.x 完成的一个任务管理平台
 
 - 新建utills文件，专门写需要加载内容用到的函数，在只能加载一次的核心模块core中引用；
 
+----------
+
 ### **2017/10/29 学习心得：**
 
 - 引入时间类库的方法： cnpm i --save date-fns; cnpm i --save-dev @types/date-fns.
@@ -61,6 +63,8 @@ angualr4.x 完成的一个任务管理平台
 - 在使用angular/cli工具创建新的模块时，会报错”ELOOP: too many symbolic links encountered“。是由于使用cnpm install 安装的结果。删除掉node_nodules,使用npm install 重新安装就好。
 
 - 全局npm安装模块时，输入" $ npm install -g @angular/cli"时，会报错"npm WARN checkPermissions Missing write access"。解决方法是：删除掉 C:\Users\dd\AppData\Roaming\npm-cache\，C:\Users\dd\AppData\Roaming\npm\  两个文件夹 重新执行 npm install -g。
+
+----------
 
 ### **2017/11/4 学习心得：**
 
@@ -81,3 +85,71 @@ angualr4.x 完成的一个任务管理平台
 - 聪明组件越少越好，笨组件越多越好。
 
 - 建立简单组件的方法： ng g c shared/confirm-dialog -it -is --spec=false;
+
+----------
+
+### **2017/11/5 学习心得：**
+
+- @angular/animations的使用方法。
+
+``` module
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+@NgModule({
+  BrowserAnimationsModule, //最后加载它，可能会引起样式混乱
+})
+
+```
+
+``` component
+
+import { trigger, state, transition, style, animate, keyframes } from '@angular/animations';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss'],
+  animations: [
+    trigger('square', [
+      state('green', style({'background-color': 'green', 'height': '100px', 'transform': 'translateX(-100%)'})),
+      state('red', style({'background-color': 'red', 'height': '50px', 'transform': 'translateX(100%)'})),
+      transition('green => red', animate('.2s ease-in')),
+      // transition('red => green', animate('.2s ease-out')),
+      transition('red => green', animate(5000, keyframes([
+        style({transform: 'translateY(100%)'}),
+        style({transform: 'translateY(98%)'}),
+        style({transform: 'translateY(95%)'}),
+        style({transform: 'translateY(80%)'}),
+        style({transform: 'translateY(60%)'}),
+        style({transform: 'translateY(30%)'}),
+        style({transform: 'translateY(0%)'}),
+        style({transform: 'translateY(-10%)'}),
+        style({transform: 'translateY(-30%)'}),
+        style({transform: 'translateY(50%)'}),
+        style({transform: 'translateY(80%)'}),
+        style({transform: 'translateY(100%)'}),
+      ])))
+    ])
+  ]
+})
+
+export class AppComponent {
+  squareState : string;
+  onClick() {
+    this.squareState = this.squareState === 'red' ? 'green' : 'red';
+  }
+}
+
+```
+
+``` html
+<div class="square" style="height: 20px; width:20px; margin: 50px auto; background-color: #ddd" [@square]="squareState" (click)="onClick()"></div>
+
+```
+
+- 在component.ts中，使用@hostBinding('@card),是绑定在宿主元素上，作用的是运用该组件的元素身上，是整个组件一起做动画。
+
+- 而不使用@hostBing('item')的方法，在该组件的顶层html中加上`<div [item]="widthPriority"></div>`的写法，是作用于组件本身一部分。
+
+- 路由动画只能由@hostBing来绑定，不能写在html中。
