@@ -153,3 +153,9 @@ export class AppComponent {
 - 而不使用@hostBing('item')的方法，在该组件的顶层html中加上`<div [item]="widthPriority"></div>`的写法，是作用于组件本身一部分。
 
 - 路由动画只能由@hostBing来绑定，不能写在html中。
+
+----------
+
+### **2017/11/6 学习心得：**
+
+- rx.js， 操作符网站：[https://rxmarbles.com](https://rxmarbles.com);
