@@ -46,7 +46,7 @@ angualr4.x 完成的一个任务管理平台
 
 ----------
 
-### **第一天学习心得：**
+### **2017/10/27 学习心得：**
 
 - material自定义svgIcon，需要额外引入import {httpModul} from '@angular/http'，才可找到正确的本地路径；
 
