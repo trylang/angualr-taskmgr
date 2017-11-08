@@ -203,4 +203,35 @@ export class AppComponent {
 
 - distinctUntilChanged()方法是：只过滤最近之前的相同数据，如果再输出之前的之前的相同值，则仍会被输出。而distinctUntilChanged()只和之前最近的一个数据进行对比，所以会性能好一些
 
--
+- merge()方法的学习，用于多组数据
+
+  ``` html 引入rx
+  <script src="https://unpkg.com/@reactivex/rxjs@5.0.3/dist/global/Rx.js"></script>
+  ```
+
+  ``` ts
+  const length = document.getElementById('length');
+  const width = document.getElementById('width');
+
+  // 监听
+  const length$ = Rx.Observable.fromEvent(length, 'keyup').plunk('target', 'value');
+  const width$ = Rx.Observable.fromEvent(width, 'keyup').plunk('target', 'value');
+
+  const merged$ = Rx.Observable.merge(length$, width$);
+
+  // 订阅
+  merged$.subscribe(val => console.log(val));
+
+  ```
+- concat() 在数据后面拼接值。用于多组数据
+- startWith(0) 一般用于赋予初始值。
+  ``` ts
+  const first$ = Rx.Observable.from([1, 2, 3, 4]).startWith(0);
+
+  // 打印如下： 0 1 2 3 4
+  ```
+- combineLatest() 与 zip() 的区别: combineLatest() 两个都有值的情况下，任何一个值的改变都会引起重新计算，如果一个有值，一个没有值则不会输出。而zip()方法则是必须两个值成对改变时，才会重新计算。
+  ``` ts
+  Rx.Observable.combineLatest(length$, width$, (l, w) => l * w);
+  ```
+- withLatestFrom(width$), 输出的是数组，且以源流的变化为基准，源流变化，才开始计算。

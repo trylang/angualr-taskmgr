@@ -8,6 +8,7 @@ import { MatToolbarModule, MatSelectModule, MatRadioModule, MatNativeDateModule,
   MatListModule, MatInputModule } from '@angular/material';
 import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
 import { ImageListSelectComponent } from './image-list-select/image-list-select.component';
+import { AgeInputComponent } from './age-input/age-input.component';
 import { DirectiveModule } from '../directive/directive.module';
 
 @NgModule({
@@ -54,8 +55,8 @@ import { DirectiveModule } from '../directive/directive.module';
     MatRadioModule,
     MatSelectModule,
     DirectiveModule,
-  ],
-  declarations: [ConfirmDialogComponent, ImageListSelectComponent],
-  entryComponents: [ConfirmDialogComponent, ImageListSelectComponent]
+    AgeInputComponent ],
+  declarations: [ConfirmDialogComponent, ImageListSelectComponent, AgeInputComponent],
+  entryComponents: [ConfirmDialogComponent, ImageListSelectComponent, AgeInputComponent]
 })
 export class SharedModule { }

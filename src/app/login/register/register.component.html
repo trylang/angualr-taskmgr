@@ -1,24 +1,25 @@
-<form>
+<form [formGroup]="User" (ngSubmit)="onSubmit(user, $event)">
     <mat-card class="card">
       <mat-tab-group>
         <mat-tab label="帐号信息">
           <mat-form-field class="full-width">
-            <input matInput placeholder="电子邮件">
+            <input matInput placeholder="电子邮件" formControlName="email">
           </mat-form-field>
           <mat-form-field class="full-width">
-            <input matInput type="text" placeholder="您的名字">
+            <input matInput type="text" placeholder="您的名字" formControlName="name">
           </mat-form-field>
           <mat-form-field class="full-width">
-            <input matInput type="password" placeholder="您的密码">
+            <input matInput type="password" placeholder="您的密码" [(ngModel)]="user.password" formControlName="password">
           </mat-form-field>
           <mat-form-field class="full-width">
-            <input matInput type="password" placeholder="为避免失误请再次输入">
+            <input matInput type="password" placeholder="为避免失误请再次输入" [(ngModel)]="user.password" formControlName="repeat">
           </mat-form-field>
           <mat-grid-list cols="6">
             <mat-grid-tile *ngFor="let item of items">
               <mat-icon class="avatar" [svgIcon]="item"></mat-icon>
             </mat-grid-tile>
           </mat-grid-list>
+          <!-- <app-age-input [(ngModel)]="user.dataOfBirth" formControlName="dataOfBirth"></app-age-input> -->
           <div class="full-width action-area">
             <button mat-raised-button type="button">下一步</button>
             <span class="fill-remaining-space"></span>
