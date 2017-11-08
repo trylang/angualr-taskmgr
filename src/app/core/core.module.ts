@@ -6,6 +6,7 @@ import { DomSanitizer } from '@angular/platform-browser'; // 用于返回安全�
 import { MatIconRegistry } from '@angular/material';
 
 import { SharedModule } from '../shared/shared.module';
+import { ServicesModule } from '../services/services.module';
 
 import { loadSvgResources } from '../utills/svg.utill';
 import { HeaderComponent } from './header/header.component';
@@ -14,11 +15,15 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 
 import 'hammerjs';
 import 'rxjs/add/operator/take';
+import 'rxjs/add/operator/do';
+
+import '../utills/debug.utill';
 
 @NgModule({
   imports: [
     HttpModule,
     SharedModule,
+    ServicesModule,
     BrowserAnimationsModule,
   ],
   declarations: [ // 申明组件，但只在此模块中可用，如果想让其他模块也可使用，则需要到处export
@@ -26,7 +31,12 @@ import 'rxjs/add/operator/take';
   ],
   exports: [ // 导出组件供其他模块使用
     HeaderComponent, FooterComponent, SidebarComponent
-  ]
+  ],
+  providers: [{
+    provide: 'BASE_CONFIG', useValue: {
+      uri: 'http://localhost:3000'
+    }
+  }]
 })
 export class CoreModule {
   // module是一个类，自然就会有构造函数，也就可以进行依赖性注入。核心模块只想让其加载一次，如何做？

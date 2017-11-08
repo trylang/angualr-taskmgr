@@ -159,3 +159,48 @@ export class AppComponent {
 ### **2017/11/6 学习心得：**
 
 - rx.js， 操作符网站：[https://rxmarbles.com](https://rxmarbles.com);
+
+### **2017/11/8 学习心得：**
+
+- 扩展rx.js的方法：
+  ``` 1.先引入rxjs:
+  import { Observable } from 'rxjs/Observable';
+  ```
+
+  ``` 2.需要将挂载在原型上的方法声明，声明方法如下：
+  declare module 'rxjs/Observable' {
+    interface Observable<T> {
+      debug: (...any) => Observable<T>;
+    }
+  }
+  ```
+
+  ``` 3. 使用原型定义
+  Observable.prototype.debug = function()
+  ```
+
+  ``` 4. 在全局或者当前文件引入：（因为在debug.utill.ts文件中，并没有使用export 导出，所以在其他文件引入中，就直接import就可以，如果写成 <import 'debug' from '../utills/debug.utill'> 的方式导入，会报错说找不到debug名。）
+  import 'rxjs/add/operator/do';
+  import '../utills/debug.utill';
+  ```
+
+  ``` 5. 使用方法，在数据流里使用，例如serverice中
+  return this.http.get(uri)
+    .debug('quote: ')
+    .map(res => res.json() as Quote);
+  ```
+
+- debounceTime 与 debounce 的区别
+  ``` 1. debounce(() => Rx.Observable.interval(300))现在的用法就与debounceTime(300)的效果一样。过滤掉这一时间段内数据。
+    const length = document.getElementById('length');
+    const length$ = Rx.Observable.fromEvent(length, 'keyup')
+                    .plunk('target', 'value')
+                    .debounce(() => Rx.Observable.interval(300));
+    length$.subscribe(val => console.log(val));
+  ```
+
+- distinct()方法是：过滤掉数据中重复的值。由于是对所有数列的值进行对比，所以是无尽数列，消耗内存比较大
+
+- distinctUntilChanged()方法是：只过滤最近之前的相同数据，如果再输出之前的之前的相同值，则仍会被输出。而distinctUntilChanged()只和之前最近的一个数据进行对比，所以会性能好一些
+
+-
