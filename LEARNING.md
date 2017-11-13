@@ -160,6 +160,8 @@ export class AppComponent {
 
 - rx.js， 操作符网站：[https://rxmarbles.com](https://rxmarbles.com);
 
+----------
+
 ### **2017/11/8 学习心得：**
 
 - 扩展rx.js的方法：
@@ -235,3 +237,35 @@ export class AppComponent {
   Rx.Observable.combineLatest(length$, width$, (l, w) => l * w);
   ```
 - withLatestFrom(width$), 输出的是数组，且以源流的变化为基准，源流变化，才开始计算。
+
+----------
+
+### **2017/11/9 学习心得：**
+
+- html中的简写方式:
+  - `div[[formGroup]="form"].age-input`;
+  - `div>mat-input-container>input+mat-error`;
+  - `ng-container>(div.age-num>mat-input-container>input)+(div>mat-button-toggle-group>mat-button-toggle)`;
+
+----------
+
+### **2017/11/13 学习心得：**
+
+- 想要触发form表单的onSubmit事件，则需要按钮的type设为submit。
+  ``` 例如：
+  <button mat-mini-fab color="accent" type="submit">登录</button>
+  ```
+- 组件注入依赖：
+  ``` useExisting：用于已存在的；forwardRef：是将后面注册的名称置气，不引起报错的方法；multi：由于NG_VALUE_ACCESSOR这样的令牌都是多对一的，很多地方都会用到它，所以需要置为true。
+    @Component({
+    selector: 'app-image-list-select',
+    templateUrl: './image-list-select.component.html',
+    styleUrls: ['./image-list-select.component.scss'],
+    providers: [{ // 将自己这个组件注入到这个NG_VALUE_ACCESSOR令牌上，
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => ImageListSelectComponent),
+      multi: true
+    }]
+  })
+  ```
+- `<ng-container>` 这个标签在渲染时，不会添加任何层级。比使用`<div>`要少一个层级。

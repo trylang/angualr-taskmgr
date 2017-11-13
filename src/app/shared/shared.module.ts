@@ -2,10 +2,11 @@
 
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatToolbarModule, MatSelectModule, MatRadioModule, MatNativeDateModule, MatDatepickerModule, 
+import { MatToolbarModule, MatButtonToggleModule, MatSelectModule, MatRadioModule, MatNativeDateModule, MatDatepickerModule, 
   MatTooltipModule, MatCheckboxModule,  MatMenuModule, MatAutocompleteModule, MatDialogModule, 
   MatTabsModule, MatGridListModule, MatSlideToggleModule, MatIconModule, MatButtonModule, MatCardModule, 
   MatListModule, MatInputModule } from '@angular/material';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
 import { ImageListSelectComponent } from './image-list-select/image-list-select.component';
 import { AgeInputComponent } from './age-input/age-input.component';
@@ -14,7 +15,10 @@ import { DirectiveModule } from '../directive/directive.module';
 @NgModule({
   imports: [
     CommonModule,
-    MatToolbarModule, 
+    ReactiveFormsModule,
+    FormsModule,
+    MatToolbarModule,
+    MatButtonToggleModule,
     MatIconModule, 
     MatButtonModule,
     MatListModule,
@@ -36,6 +40,8 @@ import { DirectiveModule } from '../directive/directive.module';
   ],
   exports: [
     CommonModule,
+    ReactiveFormsModule,
+    FormsModule,
     MatToolbarModule, 
     MatIconModule, 
     MatButtonModule,
@@ -55,7 +61,9 @@ import { DirectiveModule } from '../directive/directive.module';
     MatRadioModule,
     MatSelectModule,
     DirectiveModule,
-    AgeInputComponent ],
+    AgeInputComponent,
+    ImageListSelectComponent,
+  ],
   declarations: [ConfirmDialogComponent, ImageListSelectComponent, AgeInputComponent],
   entryComponents: [ConfirmDialogComponent, ImageListSelectComponent, AgeInputComponent]
 })

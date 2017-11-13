@@ -1,18 +1,19 @@
-<form action="">
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm, $event)">
     <mat-card>
       <mat-card-header>
         <mat-card-title>登录：</mat-card-title>
       </mat-card-header>
       <mat-card-content>
         <mat-form-field class="full-width">
-          <input matInput type="text" align="end" placeholder="您的email">
+          <input matInput type="email" align="end" placeholder="您的email" formControlName="email">
           <span matSuffix>@gmail.com</span>
           <mat-hint align="start">必填项</mat-hint>
+          <mat-error>{{loginForm.controls['email'].errors | json}}</mat-error>
         </mat-form-field>
         <mat-form-field class="full-width" >
-          <input matInput type="password" placeholder="您的密码">
+          <input matInput type="password" placeholder="您的密码" formControlName="password">
         </mat-form-field>
-        <button mat-mini-fab color="accent" type="button">登录</button>
+        <button mat-mini-fab color="accent" type="submit" [disabled]="!loginForm.valid">登录</button>
       </mat-card-content>
       <mat-card-actions class="text-right">
         <p>还没有账户？<a href="">注册</a></p>

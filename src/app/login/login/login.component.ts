@@ -9,7 +9,7 @@ import { Quote } from '../../domain/quote.model';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  
+  loginForm: FormGroup;
   quote: Quote = {
     "id": "2",
     "cn": "不要只因一次挫败，就放弃你原来决心想达到的梦想。（莎士比亚）",
@@ -21,6 +21,30 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.loginForm = new FormGroup({
+      email: new FormControl('lang@163.com', Validators.compose([Validators.required, Validators.email, this.validata])),
+      password: new FormControl('123456', Validators.required)
+    })
+  }
+
+  onSubmit({value, valid}, ev: Event) {
+    ev.preventDefault();
+    console.log(JSON.stringify(value));
+    console.log(valid);
+  }
+
+  // 自定义检验器
+  validata(c: FormControl): {[key: string]: any} {
+    if (!c.value) {
+      return null;  // 返回null就是正确的结果
+    }
+    const pattern = /^lang+/;
+    if (pattern.test(c.value)) {
+      return null;
+    }
+    return {
+      emailNotValid: 'The email must start with lang'
+    }
   }
 
 }

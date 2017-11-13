@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>2017/11/11（作用域）</title>
+</head>
+<body>
+<script type="text/javascript">
+
+	//1. 全局
+	var scope = "global scope";
+	function checkscope(){
+    var scope = "local scope";
+    function f(){
+        return scope;
+    }
+    return f();
+	}
+	// console.log(checkscope());
+	var scope = "global scope";
+	function checkscope1(){
+    var scope = "local scope";
+    function f(){
+        return scope;
+    }
+    return f;
+	}
+	// console.log(checkscope1()());
+
+	//2. 变量声明
+	console.log(foo); // 打印函数
+
+	function foo(){
+	  console.log("foo");
+	}
+
+	var foo = 1;
+
+	//3. 变量声明变种
+	var foo = 1;
+	console.log(foo); // 打印1
+	function foo(){
+		console.log("foo"); 
+	};
+
+</script>
+</body>
+</html>
