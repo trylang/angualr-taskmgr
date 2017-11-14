@@ -12,12 +12,13 @@ import {
 } from 'date-fns';
 import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
-import 'rxjs/add/observable/combineLatest.js';
-import 'rxjs/add/observable/merge.js';
-import 'rxjs/add/operator/filter.js';
-import 'rxjs/add/operator/startWith.js';
-import 'rxjs/add/operator/debounceTime.js';
-import 'rxjs/add/operator/distinctUntilChanged.js';
+import 'rxjs/add/observable/combineLatest';
+import 'rxjs/add/observable/merge';
+import 'rxjs/add/operator/filter';
+import 'rxjs/add/operator/startWith';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/debounceTime';
+import 'rxjs/add/operator/distinctUntilChanged';
 
 import {toDate, isValidDate } from '../../utills/date.utill';
 
@@ -73,19 +74,21 @@ export class AgeInputComponent implements ControlValueAccessor, OnInit, OnDestro
   ) { }
   
   ngOnInit() {
+    const initDate = this.dateOfBirth ? this.dateOfBirth : toDate(subYears(Date.now(), 30));
+    const initAge = this.toAge(initDate);
     this.ageForm = this.fb.group({
-      birthday: [this.validateDate],
+      birthday: [initDate, this.validateDate],
       age: this.fb.group({
-        ageNum: [],
-        ageUnit: []
+        ageNum: [initAge.age],
+        ageUnit: [initAge.unit]
       }, {validator: this.validateAge('ageNum', 'ageUnit')})
     });
     const birthday = this.ageForm.get('birthday');
     const ageNum = this.ageForm.get('age').get('ageNum');
     const ageUnit = this.ageForm.get('age').get('ageUnit');
-
-    const birthday$ = birthday.valueChanges
-      .map(d => {
+    console.log(birthday.valueChanges);
+    const birthday$ = birthday.valueChanges.map(d => {
+        console.log(d);
         return {date: d, from: 'birthday'};
       })
       .debounceTime(this.debounceTime)

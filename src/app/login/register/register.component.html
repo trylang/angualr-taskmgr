@@ -20,7 +20,6 @@
           [title]="'选择头像：'"
           [items]="items"
           formControlName="avatar"></app-image-list-select>
-          <!-- <app-age-input [(ngModel)]="user.dataOfBirth" formControlName="dataOfBirth"></app-age-input> -->
           <div class="full-width action-area">
             <button mat-raised-button type="submit">下一步</button>
             <span class="fill-remaining-space"></span>
@@ -32,22 +31,22 @@
         </mat-tab>
         <mat-tab label="个人信息">
           <!-- <app-indentity-input formControlName="identity" class="full-width control-padding">
-          </app-indentity-input>
+          </app-indentity-input> -->
           <div class="full-width control-padding">
             <app-age-input formControlName="dateOfBirth"></app-age-input>
           </div>
-          <div class="full-width control-padding">
+          <!-- <div class="full-width control-padding">
             <app-area-list formControlName="address"></app-area-list>
-          </div>
+          </div> -->
           <div class="full-width">
             <button mat-raised-button type="button" (click)="prevTab()">上一步</button>
-            <button mat-raised-button type="submit" [disabled]="!form.valid">注册</button>
+            <button mat-raised-button type="submit" [disabled]="!user.valid">注册</button>
             <span class="fill-remaining-space"></span>
             <span>
               <span>已有账户？ <a routerLink="/login">登录</a></span>
               <span>忘记 <a routerLink="/forgot">密码？</a></span>
             </span>
-          </div> -->
+          </div>
         </mat-tab>
       </mat-tab-group>
     </mat-card>
