@@ -4,6 +4,9 @@ import { MatDialog } from '@angular/material';
 import { NewProjectComponent } from '../new-project/new-project.component';
 import { InviteComponent } from '../invite/invite.component';
 import { ConfirmDialogComponent } from '../../shared/confirm-dialog/confirm-dialog.component';
+import { ProjectService } from '../../services/project.service';
+
+import * as _ from 'lodash';
 
 @Component({
   selector: 'app-project-list',
@@ -12,23 +15,28 @@ import { ConfirmDialogComponent } from '../../shared/confirm-dialog/confirm-dial
 })
 export class ProjectListComponent implements OnInit {
 
-  projects = [{
-    "name": "企业写作平台",
-    "desc": "这是一个企业内部项目",
-    "coverImg": "assets/img/covers/0.jpg"
-  }, {
-    "name": "企业写作平台2",
-    "desc": "这是一个企业内部项目2",
-    "coverImg": "/assets/img/covers/1.jpg"
-  }];
-  constructor(private dialog: MatDialog) { }
+  projects;
+  constructor(
+    private dialog: MatDialog,
+    private service$: ProjectService
+  ) { }
 
   ngOnInit() {
+    this.service$.get("1").subscribe(projects => this.projects = projects);
   }
 
   openNewProjectDialog() {
-    const dialogRef =  this.dialog.open(NewProjectComponent, {data: {title: '新建项目'}});
-    dialogRef.afterClosed().subscribe(result => console.log(result));
+    const selectedImg = `/assets/img/covers/${Math.floor(Math.random() * 40)}_tn.jpg`;
+    const dialogRef =  this.dialog.open(
+      NewProjectComponent, 
+      {data: {
+        thumbnails: this.getThumbnails(),
+        img: selectedImg
+        }
+      });
+    dialogRef.afterClosed().subscribe(result => {
+      this.service$.add(result);
+    });
   }
   launchInviteDialog() {
     const dialogRef =  this.dialog.open(InviteComponent, {data: {dark: true}});
@@ -41,6 +49,11 @@ export class ProjectListComponent implements OnInit {
   lauchCOnfirmDialog() {
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {data: {title: '删除项目', content: '您确认要删除此项目么？', confirmAction: '确认'}});
     dialogRef.afterClosed().subscribe(result => console.log(result));    
+  }
+
+  private getThumbnails() {
+    return _.range(0, 40)
+      .map(i => `/assets/img/covers/${i}_tn.jpg`);
   }
 
 }
