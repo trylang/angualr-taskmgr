@@ -1,13 +1,13 @@
 <mat-card>
-  <mat-card-header (click)="onClick($event)">
+  <mat-card-header>
     <mat-card-title>
       <span>
         {{item.name}}
       </span>
     </mat-card-title>
   </mat-card-header>
-  <img mat-card-image [src]="item.coverImg" (click)="onClick($event)">
-  <mat-card-content (click)="onClick($event)">
+  <img mat-card-image [src]="item.coverImg">
+  <mat-card-content>
     <p>{{item.desc}}</p>
   </mat-card-content>
   <mat-card-actions>

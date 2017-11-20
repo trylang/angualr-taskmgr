@@ -32,7 +32,7 @@ export class NewProjectComponent implements OnInit {
       this.projectForm = this.fb.group({
         name: ['', Validators.required],
         desc: [],
-        coverImg: []
+        coverImg: [this.data.img]
       });
       this.headerTitle = '创建项目：';
     }
@@ -40,7 +40,8 @@ export class NewProjectComponent implements OnInit {
 
   onSubmit({value, valid}, ev: Event) {
     ev.preventDefault();
-    if (!valid) {
+    if (valid) {
+      console.log(value);
       this.dialogRef.close(value);
     }
   }

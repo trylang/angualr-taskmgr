@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, HostBinding, ChangeDetectorRef } from '@angular/core';
 import { MatDialog } from '@angular/material';
 
 import { NewProjectComponent } from '../new-project/new-project.component';
@@ -18,11 +18,13 @@ export class ProjectListComponent implements OnInit {
   projects;
   constructor(
     private dialog: MatDialog,
+    private cd: ChangeDetectorRef,
     private service$: ProjectService
   ) { }
 
   ngOnInit() {
     this.service$.get("1").subscribe(projects => this.projects = projects);
+    this.cd.markForCheck(); // 用于增强检测projects
   }
 
   openNewProjectDialog() {
@@ -34,7 +36,7 @@ export class ProjectListComponent implements OnInit {
         img: selectedImg
         }
       });
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().filter(n => n).subscribe(result => {
       this.service$.add(result);
     });
   }
@@ -54,6 +56,10 @@ export class ProjectListComponent implements OnInit {
   private getThumbnails() {
     return _.range(0, 40)
       .map(i => `/assets/img/covers/${i}_tn.jpg`);
+  }
+
+  private buildImgSrc(img: string): string {
+    return img.indexOf('_') > -1 ? img.split('_')[0] + '.jpg' : img;
   }
 
 }
