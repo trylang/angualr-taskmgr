@@ -7,6 +7,7 @@ import { MatIconRegistry } from '@angular/material';
 
 import { SharedModule } from '../shared/shared.module';
 import { ServicesModule } from '../services/services.module';
+import { AppStoreModule } from '../reducers';
 
 import { loadSvgResources } from '../utills/svg.utill';
 import { HeaderComponent } from './header/header.component';
@@ -45,6 +46,7 @@ import 'rxjs/add/operator/do';
     SharedModule,
     ServicesModule,
     BrowserAnimationsModule,
+    AppStoreModule,
   ],
   declarations: [ // 申明组件，但只在此模块中可用，如果想让其他模块也可使用，则需要到处export
     HeaderComponent, FooterComponent, SidebarComponent

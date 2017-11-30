@@ -269,3 +269,26 @@ export class AppComponent {
   })
   ```
 - `<ng-container>` 这个标签在渲染时，不会添加任何层级。比使用`<div>`要少一个层级。
+
+----------
+
+### **2017/11/22 学习心得：**
+
+- Object.assign({}, state, {quote: action.payload}) === { ...state. quote: action.payload }; 后者返回一个新的对象。
+
+----------
+
+### **2017/11/23 学习心得：**
+
+- `npm install -g concurrently`， 并行的执行多条命令的node命令。
+  ``` 在package.json中:
+    "scripts": {
+      "ng": "ng",
+      "server": "json-server --watch mock/data.json --port 3000",
+      "start": "concurrently \"ng serve --port=4200\" \"npm run server\"",
+      "build": "ng build",
+      "test": "ng test",
+      "lint": "ng lint",
+      "e2e": "ng e2e"
+    }
+  ```

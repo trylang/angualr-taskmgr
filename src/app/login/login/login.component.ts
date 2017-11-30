@@ -1,7 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
-import{ QuoteService } from '../../services/quote.service';
+import { QuoteService } from '../../services/quote.service';
 import { Quote } from '../../domain/quote.model';
+
+import { Observable } from 'rxjs/Observable';
+import { Store } from '@ngrx/store';
+import * as fromRoot from '../../reducers';
+import * as actions from '../../actions/quote.action';
 
 @Component({
   selector: 'app-login',
@@ -10,14 +15,20 @@ import { Quote } from '../../domain/quote.model';
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
-  quote: Quote = {
-    "id": "2",
-    "cn": "不要只因一次挫败，就放弃你原来决心想达到的梦想。（莎士比亚）",
-    "en": "Do not, for one repulse, forgo the purpose that you resolved to effect.",
-    "pic": "/assets/img/quotes/2.jpg"
-  };
-  constructor(private quoteService$: QuoteService) {
-    this.quoteService$.getQuote().subscribe(q => this.quote = q);
+  quote$: Observable<Quote>;
+  constructor(
+    private quoteService$: QuoteService,
+    private store$: Store<fromRoot.State>
+  ) {
+    this.quote$ = this.store$.select(state => state.quote.quote);
+    this.quoteService$
+      .getQuote()
+      .subscribe(
+        q => {
+          this.store$.dispatch({type: actions.QUOTE_SUCCESS, payload: q})
+        }
+        // q => this.quote = q
+      );
   }
 
   ngOnInit() {
